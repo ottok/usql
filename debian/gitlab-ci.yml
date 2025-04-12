@@ -30,9 +30,8 @@ Salsa CI:
     # Avoid duplicated pipelines, do not run detached pipelines
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
       when: never
-    # Run Salsa CI only if the Play button is pressed on the pipeline
     - if: $CI_PIPELINE_SOURCE == "push"
-      when: manual
+      when: always
   variables:
     SALSA_CI_DISABLE_REPROTEST: 1 # Disable to save CI runner resources
 
