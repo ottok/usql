@@ -1,0 +1,62 @@
+From: =?utf-8?b?T3R0byBLZWvDpGzDpGluZW4=?= <otto@kekalainen.net>
+Date: Sat, 12 Apr 2025 13:49:32 +0300
+Subject: Skip tests not feasible to have passing in a Debian build
+
+Introduce new tag 'fulltest' that is not used in `debian/rules`, thus leading to
+these tests being skipped. They fail as they expect Docker containers to be
+runnable, or tests try to include modules that are not part of the Debian
+distribution.
+
+    ...
+    src/github.com/xo/usql/drivers/metadata/informationschema/metadata_test.go:23:2: cannot find package "github.com/microsoft/go-mssqldb" in any of:
+    	/tmp/build/source/debian/.build/upstream/src/vendor/github.com/microsoft/go-mssqldb (vendor tree)
+    	/usr/lib/go-1.24/src/github.com/microsoft/go-mssqldb (from $GOROOT)
+    	/tmp/build/source/debian/.build/upstream/src/github.com/microsoft/go-mssqldb (from $GOPATH)
+    FAIL	github.com/xo/usql/drivers/metadata/informationschema [setup failed]
+    # github.com/xo/usql/drivers/metadata/postgres
+    src/github.com/xo/usql/drivers/metadata/informationschema/metadata_test.go:24:2: cannot find package "github.com/ory/dockertest/v3" in any of:
+    	/tmp/build/source/debian/.build/upstream/src/vendor/github.com/ory/dockertest/v3 (vendor tree)
+    	/usr/lib/go-1.24/src/github.com/ory/dockertest/v3 (from $GOROOT)
+    	/tmp/build/source/debian/.build/upstream/src/github.com/ory/dockertest/v3 (from $GOPATH)
+    FAIL	github.com/xo/usql/drivers/metadata/postgres [setup failed]
+    ...
+    Could not prepare the database: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+    FAIL	github.com/xo/usql/drivers/sqlite3/sqshared
+
+Forwarded: not-needed
+---
+ drivers/metadata/informationschema/metadata_test.go | 2 ++
+ drivers/metadata/postgres/metadata_test.go          | 2 ++
+ drivers/sqlite3/sqshared/reader_test.go             | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/drivers/metadata/informationschema/metadata_test.go b/drivers/metadata/informationschema/metadata_test.go
+index d81ca31..eb70d77 100644
+--- a/drivers/metadata/informationschema/metadata_test.go
++++ b/drivers/metadata/informationschema/metadata_test.go
+@@ -1,3 +1,5 @@
++//go:build fulltest
++
+ // Package informationschema_test runs integration tests for informationschema package
+ // on real databases running in containers. During development, to avoid rebuilding
+ // containers every run, add the `-cleanup=false` flags when calling `go test`.
+diff --git a/drivers/metadata/postgres/metadata_test.go b/drivers/metadata/postgres/metadata_test.go
+index 1002cc1..e859d7d 100644
+--- a/drivers/metadata/postgres/metadata_test.go
++++ b/drivers/metadata/postgres/metadata_test.go
+@@ -1,3 +1,5 @@
++//go:build fulltest
++
+ package postgres_test
+ 
+ import (
+diff --git a/drivers/sqlite3/sqshared/reader_test.go b/drivers/sqlite3/sqshared/reader_test.go
+index a9fe8b6..886336f 100644
+--- a/drivers/sqlite3/sqshared/reader_test.go
++++ b/drivers/sqlite3/sqshared/reader_test.go
+@@ -1,3 +1,5 @@
++//go:build fulltest
++
+ package sqshared
+ 
+ import (
