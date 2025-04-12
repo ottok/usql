@@ -8,6 +8,9 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/buildflags.mk
 
+# Provides $(DEB_VERSION_UPSTREAM)
+include /usr/share/dpkg/pkg-info.mk
+
 # Limit the scope of of dh_golang to just iterating just these packages. Path
 # ithub.com/xo/usql is omitted intentionally to avoid failures on references to
 # too many dependencies.
@@ -64,7 +67,7 @@ execute_before_dh_auto_build:
 override_dh_auto_build:
 	dh_auto_build -O--builddirectory=debian/.build/upstream -O--buildsystem=golang -- \
 	  -tags "$(TAGS)" \
-	  -ldflags="-linkmode=external -X github.com/xo/usql/text.CommandName=usql -X github.com/xo/usql/text.CommandVersion=0.19.19" \
+	  -ldflags="-linkmode=external -X github.com/xo/usql/text.CommandName=usql -X github.com/xo/usql/text.CommandVersion=$(DEB_VERSION_UPSTREAM)" \
 		-buildmode=pie
 
 # Note that the 'nocheck' condition inside this section may potentially be
