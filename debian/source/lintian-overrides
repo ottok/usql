@@ -1,0 +1,5 @@
+# Test files with intentionally long lines of test data
+usql source: very-long-line-length-in-source-file * > 512 [testdata/duckdb.db:1]
+usql source: very-long-line-length-in-source-file * > 512 [drivers/sqlite3/sqshared/reader_test.go:*]
+usql source: very-long-line-length-in-source-file * > 512 [.github/workflows/announce.yml:*]
+usql source: very-long-line-length-in-source-file * > 512 [drivers/metadata/informationschema/metadata_test.go:*]
