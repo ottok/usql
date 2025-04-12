@@ -1,7 +1,84 @@
 #!/usr/bin/make -f
 
+export DH_VERBOSE = 1
+
+# Generic hardening of binaries
+# Note that passing -buildmode=pie separately is also needed.
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+# Limit the scope of of dh_golang to just iterating just these packages. Path
+# ithub.com/xo/usql is omitted intentionally to avoid failures on references to
+# too many dependencies.
+export DH_GOLANG_BUILDPKG_DH_GOLANG = \
+	github.com/xo/usql/drivers/metadata \
+	github.com/xo/usql/drivers/metadata/informationschema \
+	github.com/xo/usql/drivers/metadata/mysql \
+	github.com/xo/usql/drivers/metadata/postgres \
+	github.com/xo/usql/drivers/mymysql \
+	github.com/xo/usql/drivers/mysql \
+	github.com/xo/usql/drivers/sqlite3 \
+	github.com/xo/usql/drivers/sqlite3/sqshared \
+	github.com/xo/usql/env \
+	github.com/xo/usql/handler \
+	github.com/xo/usql/metacmd \
+	github.com/xo/usql/metacmd/charts \
+	github.com/xo/usql/rline \
+	github.com/xo/usql/stmt \
+	github.com/xo/usql/styles \
+	github.com/xo/usql/text
+
+# Control the scope of the entire build. The root of usql needs to be included
+# so that the actual usql binary is included in dh_install.
+export DH_GOLANG_BUILDPKG = github.com/xo/usql $(DH_GOLANG_BUILDPKG_DH_GOLANG)
+
+# Decrease the scope of what is being built
+export TAGS = \
+	mymysql \
+	mysql \
+	sqlite \
+	sqlite_app_armor \
+	sqlite_fts5 \
+	sqlite_introspect \
+	sqlite_json1 \
+	sqlite_math_functions \
+	sqlite_stat4 \
+	sqlite_vtable \
+	no_clickhouse \
+	no_csvq \
+	no_oracle \
+	no_sqlserver \
+	no_moderncsqlite
+
+# Logo is embedded and thus must be included
+export DH_GOLANG_INSTALL_EXTRA := text/logo.png
+
 %:
-	dh $@ --builddirectory=debian/build --buildsystem=golang
+	dh $@ --builddirectory=debian/.build/upstream --buildsystem=golang
+
+execute_before_dh_auto_build:
+	ln -sfr --verbose debian/vendor/ debian/.build/upstream/src/vendor
+
+# Customize build so that --tags can be passed
+override_dh_auto_build:
+	dh_auto_build -O--builddirectory=debian/.build/upstream -O--buildsystem=golang -- \
+	  -tags "$(TAGS)" \
+	  -ldflags="-linkmode=external -X github.com/xo/usql/text.CommandName=usql -X github.com/xo/usql/text.CommandVersion=0.19.19" \
+		-buildmode=pie
+
+# Note that the 'nocheck' condition inside this section may potentially be
+# completely obsolete, as at least the Launchpad riscv64 builder completely
+# skips this section with message:
+#       dh: command-omitted: The call to "debian/rules override_dh_auto_test" was
+#       omitted due to "DEB_BUILD_OPTIONS=nocheck"
+override_dh_auto_test:
+	dh_auto_test -- -tags "$(TAGS)"
 
 override_dh_auto_install:
 	dh_auto_install -- --no-source
+
+# Workaround dh-golang not honoring -tags nor DH_GOLANG_EXCLUDES when listing go
+# mods (via go list).
+override_dh_golang:
+	DH_GOLANG_BUILDPKG="$(DH_GOLANG_BUILDPKG_DH_GOLANG)" dh_golang -O--buildsystem=golang -O--builddirectory=debian/.build/upstream
