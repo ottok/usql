@@ -2,10 +2,6 @@
 # This file was automatically generated from the authoritative copy at:
 # https://salsa.debian.org/go-team/infra/pkg-go-tools/blob/master/config/gitlabciyml.go
 ---
-stages:
-  - test
-  - package
-
 include:
   - project: go-team/infra/pkg-go-tools
     ref: master
@@ -16,7 +12,7 @@ include:
       - if: $CI_PROJECT_ROOT_NAMESPACE  == "go-team"
 
 Salsa CI:
-  stage: package
+  stage: test
   trigger:
     include:
       - project: salsa-ci-team/pipeline
@@ -34,6 +30,16 @@ Salsa CI:
       when: always
   variables:
     SALSA_CI_DISABLE_REPROTEST: 1 # Disable to save CI runner resources
+
+# Following https://salsa.debian.org/newgateway-team/gitlab-profile/-/blob/main/README.md
+NEW queue gateway team copyright review:
+  stage: test
+  trigger:
+    include:
+      - project: newgateway-team/pipelines
+        ref: main
+        file: pipeline-jobs.yml
+    strategy: depend
 
 # If Salsa CI is not running at
 # https://salsa.debian.org/%{project_path}/-/pipelines, ensure that
