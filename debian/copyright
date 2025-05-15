@@ -41,14 +41,6 @@ Files: debian/vendor/github.com/mattn/go-sixel/*
 Copyright: 2021 Yasuhiro Matsumoto
 License: MIT
 
-Files: debian/vendor/github.com/nathan-fiscaletti/consolesize-go/*
-Copyright: 2020 Nathan Fiscaletti
-License: MIT
-
-Files: debian/vendor/github.com/xo/tblfmt/*
-Copyright: 2016-2024 Kenneth Shaw
-License: MIT
-
 Files: debian/vendor/github.com/xo/dburl/*
 Copyright: 2015-2024 Kenneth Shaw
 License: MIT

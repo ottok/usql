@@ -26,6 +26,7 @@ Build-Depends:
  golang-github-spf13-cobra-dev,
  golang-github-spf13-pflag-dev,
  golang-github-spf13-viper-dev,
+ golang-github-xo-tblfmt-dev,
  golang-github-xo-terminfo-dev,
  golang-github-ziutek-mymysql-dev,
  golang-golang-x-exp-dev,
