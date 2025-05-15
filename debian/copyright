@@ -13,9 +13,13 @@ Copyright:
 License: MIT
 Comment: Debian packaging is licensed under the same terms as upstream
 
-Files: debian/vendor/github.com/gohxs/readline/*
-Copyright: 2015 Chzyer
-License: MIT
+Files:
+ debian/vendor/github.com/gohxs/readline/*
+Copyright:
+ 2015 Cheney <me@chenye.org>
+ 2015-2017 Chzyer <0@0xdf.com>
+ 2017 Luis Figueiredo <stdiopt@gmail.com>
+License: Expat
 
 Files: debian/vendor/github.com/jeandeaual/go-locale/*
 Copyright:
