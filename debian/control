@@ -21,6 +21,7 @@ Build-Depends:
  golang-github-jackc-pgx-v4-dev,
  golang-github-mattn-go-isatty-dev,
  golang-github-mattn-go-runewidth-dev,
+ golang-github-mattn-go-sixel-dev,
  golang-github-mattn-go-sqlite3-dev,
  golang-github-sap-go-hdb-dev,
  golang-github-soniakeys-quant-dev,

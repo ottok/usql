@@ -10,7 +10,6 @@ MODULES=(
   "github.com/jeandeaual/go-locale"
   "github.com/kenshaw/colors"
   "github.com/kenshaw/rasterm"
-  "github.com/mattn/go-sixel"
   "github.com/xo/dburl"
   "github.com/yookoala/realpath"
 )

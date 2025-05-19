@@ -33,10 +33,6 @@ Copyright:
  2023-2025 Kenneth Shaw
 License: MIT
 
-Files: debian/vendor/github.com/mattn/go-sixel/*
-Copyright: 2021 Yasuhiro Matsumoto
-License: MIT
-
 Files: debian/vendor/github.com/xo/dburl/*
 Copyright: 2015-2024 Kenneth Shaw
 License: MIT
