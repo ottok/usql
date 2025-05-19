@@ -1,52 +1,16 @@
-# DO NOT MODIFY
-# This file was automatically generated from the authoritative copy at:
-# https://salsa.debian.org/go-team/infra/pkg-go-tools/blob/master/config/gitlabciyml.go
+# This is a template from
+# https://salsa.debian.org/salsa-ci-team/pipeline/-/raw/master/recipes/salsa-ci.yml
+#
+# If this pipeline is not running at after committing and pushing this file,
+# ensure that https://salsa.debian.org/%{project_path}/-/settings/ci_cd has in
+# field "CI/CD configuration file" filename "debian/salsa-ci.yml", the filename
+# is the same as of this file, and duplicate files with similar contents but
+# different filenames have been cleaned away.
+#
+# Feel free disable and enable tests to find a good balance between extensive
+# coverage and having a consistently green pipeline where failures are rare
+# enough that they are always investigated and addressed. For documentation
+# please read https://salsa.debian.org/salsa-ci-team/pipeline
 ---
 include:
-  - project: go-team/infra/pkg-go-tools
-    ref: master
-    file: pipeline/test-archive.yml
-    # Run the Go team CI only in the go-team project that has access to GitLab
-    # CI runners tagged 'go-ci'
-    rules:
-      - if: $CI_PROJECT_ROOT_NAMESPACE  == "go-team"
-
-Salsa CI:
-  stage: test
-  trigger:
-    include:
-      - project: salsa-ci-team/pipeline
-        ref: master
-        file: recipes/debian.yml
-    strategy: depend
-  rules:
-    # Do not create a pipeline for tags unless SALSA_CI_ENABLE_PIPELINE_ON_TAGS is set
-    - if: $CI_COMMIT_TAG != null && $SALSA_CI_ENABLE_PIPELINE_ON_TAGS !~ /^(1|yes|true)$/
-      when: never
-    # Avoid duplicated pipelines, do not run detached pipelines
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      when: never
-    - if: $CI_PIPELINE_SOURCE == "push"
-      when: always
-  variables:
-    SALSA_CI_DISABLE_REPROTEST: 1 # Disable to save CI runner resources
-
-# Following https://salsa.debian.org/newgateway-team/gitlab-profile/-/blob/main/README.md
-NEW queue gateway team copyright review:
-  stage: test
-  trigger:
-    include:
-      - project: newgateway-team/pipelines
-        ref: main
-        file: pipeline-jobs.yml
-    strategy: depend
-
-# If Salsa CI is not running at
-# https://salsa.debian.org/%{project_path}/-/pipelines, ensure that
-# https://salsa.debian.org/%{project_path}/-/settings/ci_cd has in field "CI/CD
-# configuration file" the same filename as this file.
-#
-# If Salsa CI is running, but first job is stuck because the project doesn't
-# have any runners online assigned to it, ensure that
-# https://salsa.debian.org/%{project_path}/-/settings/ci_cd has under "Runners"
-# the setting for "Enable instance runners for this project" enabled.
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml

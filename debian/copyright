@@ -1,13 +1,16 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://github.com/xo/usql
-Upstream-Name: XO - Cross-platform database, language, and platform tools
+Upstream-Name: usql
 Upstream-Contact: https://github.com/xo/usql/issues
 
-Files: *
-Copyright: 2016-2025 Kenneth Shaw
+Files:
+ *
+Copyright:
+ 2016-2025 Kenneth Shaw
 License: Expat
 
-Files: debian/*
+Files:
+ debian/*
 Copyright:
  2025 Otto Kekäläinen <otto@debian.org>
 License: Expat
@@ -21,24 +24,30 @@ Copyright:
  2017 Luis Figueiredo <stdiopt@gmail.com>
 License: Expat
 
-Files: debian/vendor/github.com/jeandeaual/go-locale/*
+Files:
+ debian/vendor/github.com/jeandeaual/go-locale/*
 Copyright:
  2020 Alexis Jeandeau
 License: Expat
 
-Files: debian/vendor/github.com/kenshaw/colors/*
+Files:
+ debian/vendor/github.com/kenshaw/colors/*
 Copyright:
  2015-2024 Kenneth Shaw
 License: Expat
 
-Files: debian/vendor/github.com/kenshaw/rasterm/*
+Files:
+ debian/vendor/github.com/kenshaw/rasterm/*
 Copyright:
  2021 Jason Stewart
  2023-2025 Kenneth Shaw
 License: Expat
 
-Files: debian/vendor/github.com/yookoala/realpath/*
-Copyright: 2012-2017 Taru Karttunen and Shu Hung Yeung (Koala Yeung)
+Files:
+ debian/vendor/github.com/yookoala/realpath/*
+Copyright:
+ 2012-2017 Taru Karttunen
+ 2012-2017 Shu Hung Yeung (Koala Yeung)
 License: Expat
 
 License: Expat
