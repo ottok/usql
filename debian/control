@@ -43,11 +43,14 @@ XS-Go-Import-Path: github.com/xo/usql
 Package: usql
 Section: utils
 Architecture: any
+Multi-Arch: foreign
+Static-Built-Using:
+ ${misc:Static-Built-Using},
 Depends:
  ${misc:Depends},
  ${shlibs:Depends},
-Static-Built-Using:
- ${misc:Static-Built-Using},
+Built-Using:
+ ${misc:Built-Using},
 Description: Universal command-line interface for SQL databases (program)
  usql is a universal command-line interface for PostgreSQL, MariaDB, SQLite3,
  and many other databases including NoSQL and non-relational databases!
