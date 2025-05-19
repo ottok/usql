@@ -1,4 +1,4 @@
-From: =?utf-8?b?T3R0byBLZWvDpGzDpGluZW4=?= <otto@kekalainen.net>
+From: =?utf-8?b?T3R0byBLZWvDpGzDpGluZW4=?= <otto@debian.org>
 Date: Sat, 12 Apr 2025 13:49:32 +0300
 Subject: Skip tests not feasible to have passing in a Debian build
 

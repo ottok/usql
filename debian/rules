@@ -60,8 +60,12 @@ export DH_GOLANG_INSTALL_EXTRA := text/logo.png
 %:
 	dh $@ --builddirectory=debian/.build/upstream --buildsystem=golang
 
-execute_before_dh_auto_build:
-	ln -sfr --verbose debian/vendor/ debian/.build/upstream/src/vendor
+# Copy vendored sources into build directory
+execute_before_dh_auto_configure:
+	cp -av debian/vendor ./
+
+execute_after_dh_clean:
+	rm -rfv vendor/
 
 # Customize build so that --tags can be passed
 override_dh_auto_build:
