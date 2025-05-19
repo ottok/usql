@@ -16,6 +16,7 @@ Build-Depends:
  golang-github-go-sql-driver-mysql-dev,
  golang-github-gocql-gocql-dev,
  golang-github-google-go-cmp-dev,
+ golang-github-google-goexpect-dev,
  golang-github-google-goterm-dev,
  golang-github-jackc-pgx-v4-dev,
  golang-github-mattn-go-isatty-dev,

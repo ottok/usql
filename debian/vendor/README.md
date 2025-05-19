@@ -7,7 +7,6 @@ go mod vendor
 # Download only the dependencies that are not yet available in Debian
 MODULES=(
   "github.com/gohxs/readline"
-  "github.com/google/goexpect"
   "github.com/jeandeaual/go-locale"
   "github.com/kenshaw/colors"
   "github.com/kenshaw/rasterm"
