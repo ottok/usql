@@ -61,3 +61,32 @@ Description: Universal command-line interface for SQL databases (program)
  has additional features that psql does not, such as multiple database
  support, copying between databases, syntax highlighting, context-based
  completion, and terminal graphics.
+
+Package: golang-github-xo-usql-dev
+Architecture: all
+Multi-Arch: foreign
+Depends:
+ golang-github-alecthomas-chroma-v2-dev,
+ golang-github-cyphar-filepath-securejoin-dev,
+ golang-github-go-sql-driver-mysql-dev,
+ golang-github-gocql-gocql-dev,
+ golang-github-google-go-cmp-dev,
+ golang-github-jackc-pgx-v4-dev,
+ golang-github-mattn-go-isatty-dev,
+ golang-github-mattn-go-runewidth-dev,
+ golang-github-mattn-go-sqlite3-dev,
+ golang-github-sap-go-hdb-dev,
+ golang-github-spf13-cobra-dev,
+ golang-github-spf13-pflag-dev,
+ golang-github-spf13-viper-dev,
+ golang-github-xo-terminfo-dev,
+ golang-github-ziutek-mymysql-dev,
+ golang-golang-x-exp-dev,
+ golang-google-grpc-dev,
+ ${misc:Depends},
+Description: Universal command-line interface for SQL databases (library)
+ usql is a universal command-line interface for PostgreSQL, MariaDB, SQLite3,
+ and many other databases including NoSQL and non-relational databases!
+ .
+ The development library package is used by Go modules that reuse some of the
+ code in usql.

@@ -5,4 +5,5 @@
 /.build/
 /debhelper-build-stamp
 /files
+/golang-github-xo-usql-dev/
 /usql/
