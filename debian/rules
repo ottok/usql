@@ -78,8 +78,11 @@ override_dh_auto_build:
 override_dh_auto_test:
 	dh_auto_test -- -tags "$(TAGS)"
 
-override_dh_auto_install:
-	dh_auto_install -- --no-source
+# Remove extraneous files from the -dev package
+override_dh_install:
+	dh_install
+	find debian/golang-github-xo-usql-dev -type f -name ".gitignore" -delete
+	rm -f debian/golang-github-xo-usql-dev/usr/share/gocode/src/github.com/xo/usql/text/license.go
 
 # Workaround dh-golang not honoring -tags nor DH_GOLANG_EXCLUDES when listing go
 # mods (via go list).
