@@ -1,0 +1,2 @@
+# These are all test files, not documentation
+golang-github-xo-usql-dev: package-contains-documentation-outside-usr-share-doc [usr/share/gocode/src/github.com/xo/usql/drivers/testdata/*.txt]
