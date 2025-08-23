@@ -63,6 +63,8 @@ export DH_GOLANG_INSTALL_EXTRA := text/logo.png
 # Copy vendored sources into build directory
 execute_before_dh_auto_configure:
 	cp -av debian/vendor ./
+	# Remove extraneous files that don't belong to a Debian package
+	find drivers/testdata -type f -name ".gitignore" -delete
 
 execute_after_dh_clean:
 	rm -rfv vendor/
@@ -81,9 +83,6 @@ override_dh_auto_build:
 #       omitted due to "DEB_BUILD_OPTIONS=nocheck"
 override_dh_auto_test:
 	dh_auto_test -- -tags "$(TAGS)"
-
-override_dh_auto_install:
-	dh_auto_install -- --no-source
 
 # Workaround dh-golang not honoring -tags nor DH_GOLANG_EXCLUDES when listing go
 # mods (via go list).
