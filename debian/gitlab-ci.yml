@@ -13,4 +13,4 @@
 # please read https://salsa.debian.org/salsa-ci-team/pipeline
 ---
 include:
-  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/ubuntu.yml

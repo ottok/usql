@@ -1,7 +1,5 @@
-usql (0.19.19-1) unstable; urgency=medium
+usql (0.19.19-0ubuntu1) resolute; urgency=medium
 
-  * Initial release of usql, with five dependencies included, all small and
-    unlikely to have other consumers in Debian and not worth packaging
-    separately (Closes: #1100934)
+  * Initial release (Closes: #1100934, LP: #2136092)
 
- -- Otto Kekäläinen <otto@debian.org>  Tue, 26 Aug 2025 00:18:31 -0700
+ -- Otto Kekäläinen <otto@debian.org>  Sun, 14 Dec 2025 22:40:59 -0800

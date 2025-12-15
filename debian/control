@@ -1,7 +1,8 @@
 Source: usql
 Section: golang
 Priority: optional
-Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: : Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 Uploaders:
  Otto Kekäläinen <otto@debian.org>,
 Build-Depends:
