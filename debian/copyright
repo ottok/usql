@@ -6,7 +6,7 @@ Upstream-Contact: https://github.com/xo/usql/issues
 Files:
  *
 Copyright:
- 2016-2025 Kenneth Shaw
+ 2016-2024 Kenneth Shaw
 License: Expat
 
 Files:
@@ -23,6 +23,19 @@ Copyright:
  2015-2017 Chzyer <0@0xdf.com>
  2017 Luis Figueiredo <stdiopt@gmail.com>
 License: Expat
+
+Files:
+ debian/vendor/github.com/gohxs/readline/term.go
+ debian/vendor/github.com/gohxs/readline/term_bsd.go
+ debian/vendor/github.com/gohxs/readline/term_linux.go
+ debian/vendor/github.com/gohxs/readline/term_solaris.go
+ debian/vendor/github.com/gohxs/readline/term_unix.go
+ debian/vendor/github.com/gohxs/readline/term_windows.go
+Copyright:
+ 2011-2013 The Go Authors
+License: BSD-3-clause
+Comment: The "BSD style license" the header refers to is the BSD-3-clause
+ license used by the Go Authors in the main Go releases.
 
 Files:
  debian/vendor/github.com/jeandeaual/go-locale/*
@@ -68,3 +81,29 @@ License: Expat
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice, this
+    list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+    this list of conditions and the following disclaimer in the documentation
+    and/or other materials provided with the distribution.
+ .
+ 3. Neither the name of the copyright holder nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
