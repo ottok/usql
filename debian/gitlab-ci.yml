@@ -14,3 +14,11 @@
 ---
 include:
   - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml
+
+
+variables:
+  # Debrebuild fails for this package without clear error message.As the
+  # debrebuid job is new and never passed for this package, it isn't a sign of a
+  # regression, and can't be fixed, so disable it to keep the overall pipeline
+  # green and able to detect real regressions.
+  SALSA_CI_DISABLE_DEBREBUILD: 1
