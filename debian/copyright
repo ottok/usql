@@ -12,7 +12,7 @@ License: Expat
 Files:
  debian/*
 Copyright:
- 2025 Otto Kekäläinen <otto@debian.org>
+ 2025-2026 Otto Kekäläinen <otto@debian.org>
 License: Expat
 Comment: Debian packaging is licensed under the same terms as upstream
 
